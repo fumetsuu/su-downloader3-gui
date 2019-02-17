@@ -1,0 +1,48 @@
+#add-dialog
+	display: none
+	position: absolute
+	width: 100%
+
+.add-dialog
+	margin-left: 50%
+	margin-top: 2 * $actionbar-height
+	transform: translate(-50%)
+	width: 50%
+	height: 150px
+	background-color: $sidebar-bg
+	box-shadow: 1px 1px 15px 1px rgba(50,50,50,0.3)
+	padding: 8px 12px 12px 12px
+	display: grid
+	.dialog-title
+		width: 100%
+		color: $text-light
+		font-size: 14px
+		font-family: Lato
+		font-weight: 300
+		margin-bottom: 8px
+	input[type="text"]
+		width: 100%
+		height: 36px
+		border: none
+		background-color: darken($sidebar-bg, 6%)
+		color: $text-light
+		font-family: Lato
+		font-weight: 300
+		font-size: 16px
+		line-height: 16px
+		text-indent: 12px
+		margin-bottom: 8px
+		justify-self: right
+	input[type="submit"]
+		border: none
+		background-color: darken($sidebar-bg, 6%)
+		height: 36px
+		margin-left: 8px
+		color: $text-light
+		+hover-blue
+		&:hover
+			cursor: pointer
+	.ctrl-buttons
+		justify-self: right
+		.close-btn
+			+hover-red

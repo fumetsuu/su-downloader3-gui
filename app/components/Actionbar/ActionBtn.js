@@ -1,17 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const ActionBtn = ({FAIcon, Action}) => {
+const ActionBtn = ({icon, action, className}) => {
 	return (
-		<div className="action-btn" onClick={Action}>
-			<div className="fa-solid">{FAIcon}</div>
+		<div className={'actionbtn ' + className || ''} onClick={action}>
+			<div className="material-icons">{icon}</div>
 		</div>
 	)
 }
 
 ActionBtn.propTypes = {
-	FAIcon: PropTypes.string,
-	Action: PropTypes.func
+	icon: PropTypes.string,
+	action: PropTypes.func,
+	className: PropTypes.string
 }
 
 export default ActionBtn

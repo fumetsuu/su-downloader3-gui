@@ -1,2 +1,19 @@
 .actionbar
 	background-color: $actionbar-bg
+	display: grid
+	grid-template-columns: repeat(5, $actionbar-height)
+	.actionbtn
+		background-color: $actionbtn-bg
+		color: $text-light
+		width: 100%
+		height: 100%
+		text-align: center
+		+hover-blue
+		.material-icons
+			line-height: $actionbar-height
+			font-size: 32px
+			font-weight: 900
+		&:hover
+			cursor: pointer
+	.actionbtn-delete
+		+hover-red

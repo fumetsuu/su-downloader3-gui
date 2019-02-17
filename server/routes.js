@@ -6,19 +6,19 @@ module.exports = (app, io, appBuildDir) => {
 		res.sendFile(path.resolve(appBuildDir, 'index.html'))
 	})
 	
-	var globalSocket
+	var scopedSocket
 
 	io.on('connection', socket => {
-		globalSocket = socket		
+		scopedSocket = socket		
 	})
 
 	app.get('/10mbtest', (req, res) => {
 		console.log('starting download for 10mb test')
 		startDownload('http://ftp.iinet.net.au/pub/test/10meg.test').subscribe({
-			next: x => globalSocket.emit('dlinfo', x),
-			error: e => globalSocket.emit('dlerr', e),
+			next: x => scopedSocket.emit('dlinfo', x),
+			error: e => scopedSocket.emit('dlerr', e),
 			complete: () => {
-				globalSocket.emit('dlcomplete', 'id')
+				scopedSocket.emit('dlcomplete', 'id')
 				res.end()
 			}
 		})
