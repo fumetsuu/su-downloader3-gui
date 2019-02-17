@@ -1,9 +1,13 @@
 import React from 'react'
 
+import { Sidebar, Actionbar, Downloads } from './components'
+
 const App = () => {
 	return (
-		<div>
-			HEY WORLD
+		<div className="app-container">
+			<Sidebar />
+			<Actionbar />
+			<Downloads />
 		</div>
 	)
 }

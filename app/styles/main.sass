@@ -1,2 +1,14 @@
-body
-	background-color: red
+@import 'vars'
+@import 'sidebar'
+@import 'actionbar'
+
+body, html
+	background-color: $white
+	margin: 0
+	padding: 0
+	height: 100vh
+
+.app-container
+	display: grid
+	grid-template-columns: $sidebar-width auto
+	grid-template-rows: $actionbar-height auto

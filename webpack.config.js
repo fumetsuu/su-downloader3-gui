@@ -10,10 +10,18 @@ module.exports = {
 	mode: 'development',
 	watch: true,
 	entry: './app/index.js',
+	node: {
+		console: true,
+		fs: 'empty',
+		net: 'empty',
+		tls: 'empty'
+	},
+
 	output: {
 		path: __dirname + '/build/',
-		publicPath: './build',
+		publicPath: './build/',
 		filename: 'public/bundle.js',
+		chunkFilename: 'public/[name].[chunkhash].js'
 	},
 	module: {
 		rules: [
