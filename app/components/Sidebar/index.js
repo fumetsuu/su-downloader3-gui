@@ -1,9 +1,10 @@
 import React from 'react'
+import Label from './Label'
 
 const Sidebar = () => {
 	return (
 		<div className="sidebar">
-			sidebar
+			<Label title="All Downloads" counter={0}/>
 		</div>
 	)
 }

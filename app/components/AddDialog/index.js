@@ -45,8 +45,6 @@ export default class AddDialog extends Component {
 
 	close() {
 		document.getElementById('add-dialog').style.display = 'none'
-		var destination = path.dirname(this.state.destination)
-		destination = destination == '.' ? '' : destination
-		this.setState({ url: '', destination })
+		this.setState({ url: '', destination: '' })
 	}
 }

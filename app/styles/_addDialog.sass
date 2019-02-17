@@ -8,41 +8,48 @@
 	margin-top: 2 * $actionbar-height
 	transform: translate(-50%)
 	width: 50%
-	height: 150px
-	background-color: $sidebar-bg
+	height: 184px
+	background-color: $white
 	box-shadow: 1px 1px 15px 1px rgba(50,50,50,0.3)
-	padding: 8px 12px 12px 12px
 	display: grid
 	.dialog-title
 		width: 100%
 		color: $text-light
-		font-size: 14px
-		font-family: Lato
-		font-weight: 300
-		margin-bottom: 8px
+		font-family: 'Source Sans Pro'
+		font-weight: 900
+		background-color: $actionbar-bg
+		height: 32px
+		line-height: 32px
+		text-indent: 8px
+		font-size: 16px
 	input[type="text"]
-		width: 100%
+		width: calc(100% - 20px)
 		height: 36px
 		border: none
-		background-color: darken($sidebar-bg, 6%)
-		color: $text-light
+		background-color: $selected
+		color: $text-med
 		font-family: Lato
 		font-weight: 300
 		font-size: 16px
 		line-height: 16px
 		text-indent: 12px
-		margin-bottom: 8px
 		justify-self: right
+		margin-right: 10px
 	input[type="submit"]
 		border: none
-		background-color: darken($sidebar-bg, 6%)
+		background-color: $selected
 		height: 36px
+		color: $text-med
+		font-family: Lato
+		font-weight: 300
+		width: 120px
 		margin-left: 8px
-		color: $text-light
 		+hover-blue
 		&:hover
+			color: $white
 			cursor: pointer
 	.ctrl-buttons
+		margin-right: 10px
 		justify-self: right
 		.close-btn
 			+hover-red
