@@ -1,4 +1,3 @@
-const path = require('path')
 const request = require('request')
 import React, { Component } from 'react'
 import { endPoint } from '../../util'
