@@ -4,10 +4,13 @@ const app = express()
 const server = require('http').Server(app)
 const io = require('socket.io')(server)
 
+const bodyParser = require('body-parser')
+
 const buildPath = path.resolve(__dirname, '../build')
 
 //set up middleware
 app.use('/build/public', express.static(path.resolve(buildPath, 'public')))
+app.use(bodyParser.json())
 
 //set up routes
 require('./routes')(app, io, buildPath)

@@ -22,7 +22,7 @@ export default class AddDialog extends Component {
 				<input type="text" onChange={this.onDestChange.bind(this)} placeholder="Destination" className="destination" value={destination} />
 				<div className="ctrl-buttons">
 					<input type="submit" value="Add to Queue" onClick={this.addDownload.bind(this)} />					
-					<input type="submit" value="Download Now" onClick={this.addDownload.bind(this)} />
+					<input type="submit" value="Download Now" onClick={this.addDownload.bind(this)} disabled={true}/>
 					<input type="submit" value="Cancel" onClick={this.close.bind(this)} className="close-btn" />
 				</div>
 			</div>
@@ -40,7 +40,12 @@ export default class AddDialog extends Component {
 
 	addDownload() {
 		let { url, destination } = this.state
-		request(endPoint('hey')).on('data', console.log)
+		var options = {
+			uri: endPoint('newDownload'),
+			body: { url, destination },
+			json: true
+		}
+		request.post(options)
 	}
 
 	close() {

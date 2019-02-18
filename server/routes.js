@@ -1,5 +1,8 @@
 const path = require('path')
-const { startDownload } = require('su-downloader3')
+const { SuDScheduler } = require('su-downloader3')
+const observer = require('./observer')
+
+const suDScheduler = new SuDScheduler({ downloadOptions: { throttleRate: 100 } })
 
 module.exports = (app, io, appBuildDir) => {
 	app.get('/', (req, res) => {
@@ -12,16 +15,17 @@ module.exports = (app, io, appBuildDir) => {
 		scopedSocket = socket		
 	})
 
-	app.get('/10mbtest', (req, res) => {
-		console.log('starting download for 10mb test')
-		startDownload('http://ftp.iinet.net.au/pub/test/10meg.test').subscribe({
-			next: x => scopedSocket.emit('dlinfo', x),
-			error: e => scopedSocket.emit('dlerr', e),
-			complete: () => {
-				scopedSocket.emit('dlcomplete', 'id')
-				res.end()
-			}
-		})
+	app.post('/newDownload', (req, res) => {
+		var { url, destination } = req.body
+		scopedSocket.emit('newDownload', destination)
+		suDScheduler.queueDownload(destination, { url, savePath: destination }, observer(destination, scopedSocket))
+		res.end()
+	})
+
+	app.post('/startDownload', (req, res) => {
+		var { key } = req.body
+		suDScheduler.startDownload(key)
+		res.end()
 	})
 
 }
